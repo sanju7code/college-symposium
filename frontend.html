@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CodeFest Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://source.unsplash.com/1600x900/?technology,computer') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background: #ff9800;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #e68900;
+        }
+        .qr-code {
+            display: none;
+            margin-top: 20px;
+        }
+        .qr-code img {
+            width: 200px;
+        }
+    </style>
+    <script>
+        async function registerStudent(event) {
+            event.preventDefault();
+            document.getElementById('paymentDiv').style.display = 'block';
+        }
+        async function makePayment() {
+            alert('Payment successful! Check your email for confirmation.');
+            document.getElementById('qrCode').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>CodeFest Registration</h2>
+        <form id="registerForm" onsubmit="registerStudent(event)">
+            <label>Name: <input type="text" name="name" required></label>
+            <label>Department: <input type="text" name="department" required></label>
+            <label>Email: <input type="email" name="email" id="email" required></label>
+            <label>Upload Photo: <input type="file" name="photo" accept="image/*" required></label>
+            <label>Event:
+                <select name="event">
+                    <option value="Coding Contest">Coding Contest</option>
+                    <option value="Hackathon">Hackathon</option>
+                    <option value="Tech Quiz">Tech Quiz</option>
+                    <option value="Gaming">Gaming</option>
+                </select>
+            </label>
+            <label>Food Preference: 
+                <input type="radio" name="food" value="Veg" required> Veg 
+                <input type="radio" name="food" value="Non-Veg" required> Non-Veg
+            </label>
+            <label>Transport Required:
+                <input type="radio" name="transport" value="Yes" required> Yes
+                <input type="radio" name="transport" value="No" required> No
+            </label>
+            <button type="submit">Register</button>
+        </form>
+
+        <div id="paymentDiv" style="display: none;">
+            <h3>Pay ₹100</h3>
+            <button onclick="makePayment()">Confirm Payment</button>
+            <div class="qr-code" id="qrCode">
+                <h4>Scan to Complete Payment</h4>
+                <img src="qr_code_for_payment.png">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
